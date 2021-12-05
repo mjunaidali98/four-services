@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./style.css";
+import Weather from "./components/weather";
+import Covid from "./components/covid";
+import Wordnet from "./components/wordnet";
+import Home from "./components/home";
+import Header from "./components/header";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-home">
+      <Router>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/weather" element={<Weather />} />
+          <Route path="/covid-stats" element={<Covid />} />
+          <Route path="/wordnet" element={<Wordnet />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
