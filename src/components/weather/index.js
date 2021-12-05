@@ -17,12 +17,17 @@ export default function Index() {
 
     const handleForm = (e) => {
         e.preventDefault();
+        setData(null);
+        setError(null);
         if (!input) {
             setError("Please Enter City !");
         } else {
             let url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=9e0fc0914939c270f35d7f2fda6bf08e&units=metric`
             axios.get(url).then((res) => {
                 setData(res.data);
+            }).catch((err) => {
+                setError("An error Occured!");
+                setData(null);
             })
         }
     }
@@ -41,7 +46,7 @@ export default function Index() {
                                     Submit
                                 </button>
 
-                                {error && <p>{error}</p>}
+                                {error && <p className="error-message">{error}</p>}
                             </form>
                             {data && <div className="flex-col">
                                 <div className="flex items-center justify-bewteen">
