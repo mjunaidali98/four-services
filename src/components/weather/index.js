@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { API_KEY } from "../../utils/variables";
 export default function Index() {
     const [input, setInput] = useState(null);
     const [error, setError] = useState(null);
@@ -14,7 +13,6 @@ export default function Index() {
     //     };
     //     var autocomplete = new google.maps.places.Autocomplete(inputplace, options);
     // }, [])
-
     const handleForm = (e) => {
         e.preventDefault();
         setData(null);
@@ -22,7 +20,7 @@ export default function Index() {
         if (!input) {
             setError("Please Enter City !");
         } else {
-            let url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=9e0fc0914939c270f35d7f2fda6bf08e&units=metric`
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
             axios.get(url).then((res) => {
                 setData(res.data);
             }).catch((err) => {
@@ -32,7 +30,7 @@ export default function Index() {
         }
     }
     return (
-        <div className="bg-service">
+        <div className="bg-weather">
             <div className="pt-80">
                 <p className="service-heading ">
                     Current Weather

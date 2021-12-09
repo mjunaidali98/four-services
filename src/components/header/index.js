@@ -15,6 +15,7 @@ export default function Index() {
                     <li className="navbar-button"  ><Link to="/weather">Weather Report</Link></li>
                     <li className="navbar-button" ><Link to="/covid-stats">Covid Stats</Link></li>
                     <li className="navbar-button" ><Link to="/wordnet">Word Net</Link></li>
+                    <li className="navbar-button" ><Link to="/location">Location</Link></li>
                 </ul>
             </nav>
         </div>
